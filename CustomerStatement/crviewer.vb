@@ -6,16 +6,27 @@ Imports CrystalDecisions.Windows.Forms
 Imports System.Security.Cryptography
 Imports System.IO
 Imports System.Text
-Imports System.Data
-Imports System.Data.SqlClient
+Imports acc = ACCPAC.Advantage
+
 Friend Class crviewer
     Private rdoc As New ReportDocument
     Private conrpt As New ConnectionInfo()
     Dim server As String = ""
     Dim uid As String = ""
     Dim pass As String = ""
-    Dim fdate As String = ""
-    Dim tdate As String = ""
+
+    Private ccompid As String
+    Private crbfun As Boolean
+    Private crbsrc As Boolean
+    Private cfdate As String
+    Private ctdate As String
+    Private cfrmsales As String
+    Private ctosales As String
+    Private cfrmcust As String
+    Private ctocust As String
+    Private ccw As Boolean
+    Private ccwow As Boolean
+    Friend Property ObjectHandle As String
     Friend Function createdes(ByVal key As String) As TripleDES
         Dim md5 As MD5 = New MD5CryptoServiceProvider()
         Dim des As TripleDES = New TripleDESCryptoServiceProvider()
@@ -46,10 +57,29 @@ Friend Class crviewer
         uid = Decryption(uid, secretkey)
         pass = Decryption(pass, secretkey)
 
-        Dim cons As String = "" '"Data Source =(Local); DataBase =" & custstatement.compid & "; User Id =" & uid & "; Password =" & pass & ";"
+        Dim cons As String = ""
 
         Return cons
     End Function
+    Public Sub New(ByVal _objectHandle As String, ByVal _sess As acc.Session, ByVal rbfun As Boolean, ByVal rbsrc As Boolean, ByVal fdate As String, ByVal tdate As String, ByVal frmcust As String, ByVal tocust As String, ByVal rbcw As Boolean, rbwocw As Boolean)
+        InitializeComponent()
+        ObjectHandle = _objectHandle
+        ccompid = _sess.CompanyID
+        crbfun = rbfun
+        crbsrc = rbsrc
+
+        cfdate = fdate
+        ctdate = tdate
+        cfrmcust = frmcust
+        ctocust = tocust
+        ccw = rbcw
+        ccwow = rbwocw
+    End Sub
+
+    Public Sub New(ByVal _objectHandle As String)
+        InitializeComponent()
+        ObjectHandle = _objectHandle
+    End Sub
 
 
     Private Sub crviewer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -62,13 +92,13 @@ Friend Class crviewer
             Me.Controls.Add(cwvr)
 
 
-            If custstatement.Rbfunc.Checked = True And custstatement.Rbwocw.Checked = True Then
+            If crbfun = True And ccwow = True Then
                 rdoc.Load("reports\ARCUSTHOMERPT.rpt")
-            ElseIf custstatement.Rbsource.Checked = True And custstatement.Rbwocw.Checked = True Then
+            ElseIf crbsrc = True And ccwow = True Then
                 rdoc.Load("reports\ARCUSTSURCRPT.rpt")
-            ElseIf custstatement.Rbfunc.Checked = True And custstatement.Rbwcw.Checked = True Then
+            ElseIf crbfun = True And ccw = True Then
                 rdoc.Load("reports\ARCUSTHOMERPTCW.rpt")
-            ElseIf custstatement.Rbsource.Checked = True And custstatement.Rbwcw.Checked = True Then
+            ElseIf crbsrc = True And ccw = True Then
                 rdoc.Load("reports\ARCUSTSURCRPTCw.rpt")
             End If
 
@@ -90,24 +120,11 @@ Friend Class crviewer
                 tmonthnew = custstatement.DateTimePicker2.Value.Month
             End If
 
-            Dim fdaynew As String = 0
-            If custstatement.DateTimePicker1.Value.Day.ToString.Length < 2 Then
-                fdaynew = "0" & custstatement.DateTimePicker1.Value.Day
-            Else
-                fdaynew = custstatement.DateTimePicker1.Value.Day
-            End If
 
-            Dim tdaynew As String = 0
 
-            If custstatement.DateTimePicker2.Value.Day.ToString.Length < 2 Then
-                tdaynew = "0" & custstatement.DateTimePicker2.Value.Day
-            Else
-                tdaynew = custstatement.DateTimePicker2.Value.Day
-            End If
+            Dim fdate As String = cfdate
 
-            Dim fdate As String = custstatement.DateTimePicker1.Value.Year & fmonthnew & fdaynew
-
-            Dim tdate As String = custstatement.DateTimePicker2.Value.Year & tmonthnew & tdaynew
+            Dim tdate As String = ctdate
 
 
             Readconnectionstring()
@@ -117,7 +134,7 @@ Friend Class crviewer
             For Each TAB As CrystalDecisions.CrystalReports.Engine.Table In tabs
                 Dim tablog As TableLogOnInfo = TAB.LogOnInfo
                 conrpt.ServerName = server
-                conrpt.DatabaseName = custstatement.compid
+                conrpt.DatabaseName = ccompid
                 conrpt.UserID = uid
                 conrpt.Password = pass
                 tablog.ConnectionInfo = conrpt
@@ -147,7 +164,7 @@ Friend Class crviewer
                             For Each crsubtable In crSubTables
                                 crtableLogoninfo = crsubtable.LogOnInfo
                                 subConInfo.ServerName = server
-                                subConInfo.DatabaseName = custstatement.compid
+                                subConInfo.DatabaseName = ccompid
                                 subConInfo.UserID = uid
                                 subConInfo.Password = pass
                                 crtableLogoninfo.ConnectionInfo = subConInfo 'ConInfo.ConnectionInfo
@@ -159,7 +176,7 @@ Friend Class crviewer
                             For Each crsubtable In crSubTables
                                 crtableLogoninfo = crsubtable.LogOnInfo
                                 subConInfo.ServerName = server
-                                subConInfo.DatabaseName = custstatement.compid
+                                subConInfo.DatabaseName = ccompid
                                 subConInfo.UserID = uid
                                 subConInfo.Password = pass
                                 crtableLogoninfo.ConnectionInfo = subConInfo 'ConInfo.ConnectionInfo
@@ -177,8 +194,8 @@ Friend Class crviewer
 
             rdoc.SetParameterValue("frmyearper", fdate)
             rdoc.SetParameterValue("toyearper", tdate)
-            rdoc.SetParameterValue("Frmcus", custstatement.txtfrmcus.Text)
-            rdoc.SetParameterValue("TOcus", custstatement.Txttocus.Text)
+            rdoc.SetParameterValue("Frmcus", cfrmcust)
+            rdoc.SetParameterValue("TOcus", ctocust)
 
             cwvr.ReportSource = rdoc
 

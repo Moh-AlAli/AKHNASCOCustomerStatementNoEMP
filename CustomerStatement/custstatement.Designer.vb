@@ -27,7 +27,7 @@ Partial Class custstatement
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.Rbwocw = New System.Windows.Forms.RadioButton()
         Me.CMD_OK = New System.Windows.Forms.Button()
-        Me.CMD_Exit = New System.Windows.Forms.Button()
+        Me.CMDClose = New System.Windows.Forms.Button()
         Me.Gbpar = New System.Windows.Forms.GroupBox()
         Me.btfind = New System.Windows.Forms.Button()
         Me.Txttocus = New System.Windows.Forms.TextBox()
@@ -96,18 +96,18 @@ Partial Class custstatement
         Me.CMD_OK.Text = "OK"
         Me.CMD_OK.UseVisualStyleBackColor = False
         '
-        'CMD_Exit
+        'CMDClose
         '
-        Me.CMD_Exit.BackColor = System.Drawing.SystemColors.Control
-        Me.CMD_Exit.Cursor = System.Windows.Forms.Cursors.Default
-        Me.CMD_Exit.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.CMD_Exit.Location = New System.Drawing.Point(193, 329)
-        Me.CMD_Exit.Name = "CMD_Exit"
-        Me.CMD_Exit.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.CMD_Exit.Size = New System.Drawing.Size(81, 25)
-        Me.CMD_Exit.TabIndex = 57
-        Me.CMD_Exit.Text = "Exit"
-        Me.CMD_Exit.UseVisualStyleBackColor = False
+        Me.CMDClose.BackColor = System.Drawing.SystemColors.Control
+        Me.CMDClose.Cursor = System.Windows.Forms.Cursors.Default
+        Me.CMDClose.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.CMDClose.Location = New System.Drawing.Point(193, 329)
+        Me.CMDClose.Name = "CMDClose"
+        Me.CMDClose.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.CMDClose.Size = New System.Drawing.Size(81, 25)
+        Me.CMDClose.TabIndex = 57
+        Me.CMDClose.Text = "Exit"
+        Me.CMDClose.UseVisualStyleBackColor = False
         '
         'Gbpar
         '
@@ -282,7 +282,7 @@ Partial Class custstatement
         Me.ClientSize = New System.Drawing.Size(290, 360)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.CMD_OK)
-        Me.Controls.Add(Me.CMD_Exit)
+        Me.Controls.Add(Me.CMDClose)
         Me.Controls.Add(Me.Gbpar)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.GroupBox2)
@@ -304,7 +304,7 @@ Partial Class custstatement
     Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
     Friend WithEvents Rbwocw As System.Windows.Forms.RadioButton
     Public WithEvents CMD_OK As System.Windows.Forms.Button
-    Public WithEvents CMD_Exit As System.Windows.Forms.Button
+    Public WithEvents CMDClose As System.Windows.Forms.Button
     Friend WithEvents Gbpar As System.Windows.Forms.GroupBox
     Public WithEvents btfind As System.Windows.Forms.Button
     Friend WithEvents Txttocus As System.Windows.Forms.TextBox

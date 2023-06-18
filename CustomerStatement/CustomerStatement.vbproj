@@ -6,12 +6,12 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{8CB8B468-17D1-452B-B155-950B0B803FF4}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>CustomerStatement.My.MyApplication</StartupObject>
+    <StartupObject>Sub Main</StartupObject>
     <RootNamespace>CustomerStatement</RootNamespace>
     <AssemblyName>CustomerStatement</AssemblyName>
     <FileAlignment>512</FileAlignment>
-    <MyType>WindowsForms</MyType>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <MyType>WindowsFormsWithCustomSubMain</MyType>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -20,7 +20,7 @@
     <DebugType>full</DebugType>
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>bin\Debug\Customer Statement\</OutputPath>
     <DocumentationFile>CustomerStatement.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
     <Prefer32Bit>false</Prefer32Bit>
@@ -49,9 +49,30 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>CATS_Rep.ico</ApplicationIcon>
+    <ApplicationIcon>logoicon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ACCPAC.Advantage, Version=6.7.0.0, Culture=neutral, PublicKeyToken=4d7048ecf2312a7c, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\ACCPAC DLL\DLL 69\ACCPAC.Advantage.dll</HintPath>
+    </Reference>
+    <Reference Include="ACCPAC.Advantage.COMSVR.Interop, Version=6.7.0.0, Culture=neutral, PublicKeyToken=4d7048ecf2312a7c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\..\..\..\..\..\ACCPAC DLL\DLL 69\ACCPAC.Advantage.COMSVR.Interop.dll</HintPath>
+    </Reference>
+    <Reference Include="ACCPAC.Advantage.Server, Version=6.7.0.0, Culture=neutral, PublicKeyToken=4d7048ecf2312a7c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\ACCPAC DLL\DLL 69\ACCPAC.Advantage.Server.dll</HintPath>
+    </Reference>
+    <Reference Include="ACCPAC.Advantage.Server.RemotingManager, Version=6.7.0.0, Culture=neutral, PublicKeyToken=4d7048ecf2312a7c, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\ACCPAC DLL\DLL 69\ACCPAC.Advantage.Server.RemotingManager.dll</HintPath>
+    </Reference>
+    <Reference Include="ACCPAC.Advantage.Types, Version=6.7.0.0, Culture=neutral, PublicKeyToken=4d7048ecf2312a7c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\ACCPAC DLL\DLL 69\ACCPAC.Advantage.Types.dll</HintPath>
+    </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Shared, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
@@ -84,35 +105,14 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="bin\Debug\reports\ARCUSTHOMERPT.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ARCUSTHOMERPT.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="bin\Debug\reports\ARCUSTHOMERPTCW.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ARCUSTHOMERPTCW.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="bin\Debug\reports\ARCUSTSURCRPT.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ARCUSTSURCRPT.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="bin\Debug\reports\ARCUSTSURCRPTCw.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ARCUSTSURCRPTCw.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="crviewer.Designer.vb">
       <DependentUpon>crviewer.vb</DependentUpon>
     </Compile>
     <Compile Include="crviewer.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ctControls.vb">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="custstatement.vb">
       <SubType>Form</SubType>
@@ -121,16 +121,24 @@
       <DependentUpon>custstatement.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Fromcust.Designer.vb">
-      <DependentUpon>Fromcust.vb</DependentUpon>
+    <Compile Include="Frmlogin.Designer.vb">
+      <DependentUpon>Frmlogin.vb</DependentUpon>
     </Compile>
-    <Compile Include="Fromcust.vb">
+    <Compile Include="Frmlogin.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FromFinder.Designer.vb">
+      <DependentUpon>FromFinder.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FromFinder.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="glbCode.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -142,38 +150,20 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Tocust.Designer.vb">
-      <DependentUpon>Tocust.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Tocust.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Program.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="bin\Debug\reports\ARCUSTHOMERPT.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>ARCUSTHOMERPT.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="bin\Debug\reports\ARCUSTHOMERPTCW.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>ARCUSTHOMERPTCW.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="bin\Debug\reports\ARCUSTSURCRPT.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>ARCUSTSURCRPT.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="bin\Debug\reports\ARCUSTSURCRPTCw.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>ARCUSTSURCRPTCw.vb</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="crviewer.resx">
       <DependentUpon>crviewer.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="custstatement.resx">
       <DependentUpon>custstatement.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Fromcust.resx">
-      <DependentUpon>Fromcust.vb</DependentUpon>
+    <EmbeddedResource Include="Frmlogin.resx">
+      <DependentUpon>Frmlogin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FromFinder.resx">
+      <DependentUpon>FromFinder.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -181,14 +171,8 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Tocust.resx">
-      <DependentUpon>Tocust.vb</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="bin\Debug\CustomerStatement.exe.config" />
-    <None Include="bin\Debug\CustomerStatement.vshost.exe.config" />
-    <None Include="bin\Debug\event.log" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -257,15 +241,14 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\Debug\txtcon\akhcon.txt" />
-    <Content Include="bin\Debug\CustomerStatement.exe" />
-    <Content Include="bin\Debug\CustomerStatement.pdb" />
-    <Content Include="bin\Debug\CustomerStatement.vshost.exe" />
-    <Content Include="bin\Debug\CustomerStatement.xml" />
     <Content Include="CATS_Rep.ico" />
+    <Content Include="logoicon.ico" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
