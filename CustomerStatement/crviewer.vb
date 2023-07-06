@@ -93,13 +93,13 @@ Friend Class crviewer
 
 
             If crbfun = True And ccwow = True Then
-                rdoc.Load("reports\ARCUSTHOMERPT.rpt")
+                rdoc.Load("reports\ARCUSTHOMENOEMP.rpt")
             ElseIf crbsrc = True And ccwow = True Then
-                rdoc.Load("reports\ARCUSTSURCRPT.rpt")
+                rdoc.Load("reports\ARCUSTSURCNOEMP.rpt")
             ElseIf crbfun = True And ccw = True Then
-                rdoc.Load("reports\ARCUSTHOMERPTCW.rpt")
+                rdoc.Load("reports\ARCUSTHOMENOEMPCW.rpt")
             ElseIf crbsrc = True And ccw = True Then
-                rdoc.Load("reports\ARCUSTSURCRPTCw.rpt")
+                rdoc.Load("reports\ARCUSTSURCNOEMPCW.rpt")
             End If
 
 
