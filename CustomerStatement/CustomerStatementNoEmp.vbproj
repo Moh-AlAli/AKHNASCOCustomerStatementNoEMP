@@ -54,30 +54,29 @@
   <ItemGroup>
     <Reference Include="ACCPAC.Advantage, Version=6.7.0.0, Culture=neutral, PublicKeyToken=4d7048ecf2312a7c, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\..\ACCPAC DLL\DLL 69\ACCPAC.Advantage.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\DLL\ACCPAC DLL\DLL 69\ACCPAC.Advantage.dll</HintPath>
     </Reference>
     <Reference Include="ACCPAC.Advantage.COMSVR.Interop, Version=6.7.0.0, Culture=neutral, PublicKeyToken=4d7048ecf2312a7c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>True</EmbedInteropTypes>
-      <HintPath>..\..\..\..\..\..\..\..\ACCPAC DLL\DLL 69\ACCPAC.Advantage.COMSVR.Interop.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\DLL\ACCPAC DLL\DLL 69\ACCPAC.Advantage.COMSVR.Interop.dll</HintPath>
     </Reference>
     <Reference Include="ACCPAC.Advantage.Server, Version=6.7.0.0, Culture=neutral, PublicKeyToken=4d7048ecf2312a7c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\..\ACCPAC DLL\DLL 69\ACCPAC.Advantage.Server.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\DLL\ACCPAC DLL\DLL 69\ACCPAC.Advantage.Server.dll</HintPath>
     </Reference>
     <Reference Include="ACCPAC.Advantage.Server.RemotingManager, Version=6.7.0.0, Culture=neutral, PublicKeyToken=4d7048ecf2312a7c, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\..\ACCPAC DLL\DLL 69\ACCPAC.Advantage.Server.RemotingManager.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\DLL\ACCPAC DLL\DLL 69\ACCPAC.Advantage.Server.RemotingManager.dll</HintPath>
     </Reference>
     <Reference Include="ACCPAC.Advantage.Types, Version=6.7.0.0, Culture=neutral, PublicKeyToken=4d7048ecf2312a7c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\..\ACCPAC DLL\DLL 69\ACCPAC.Advantage.Types.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\DLL\ACCPAC DLL\DLL 69\ACCPAC.Advantage.Types.dll</HintPath>
     </Reference>
-    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.ReportSource, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.Shared, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.VSDesigner, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.Windows.Forms, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="System" />
